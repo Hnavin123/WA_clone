@@ -1,33 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import { Routes } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Login from './Components/Login';
+import Home from './Components/Home';
+import PageNotFounde from './Components/PageNotFounde';
+import Chat from './Components/Chat';
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>WhatsApp Clone </h1>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        {/* It will match to the route that has chat/xxxx */}
+        <Route path='/chat/:uniqueId' element={<Chat />} />
+        <Route path='*' element={<PageNotFounde />} />
+      </Routes>
     </>
   )
 }
