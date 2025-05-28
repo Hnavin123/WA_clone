@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import { Routes } from 'react-router-dom';
 import { Route } from 'react-router-dom';
@@ -12,7 +11,6 @@ function App() {
 
   return (
     <>
-      <h1>WhatsApp Clone </h1>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
