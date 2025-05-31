@@ -1,5 +1,5 @@
 import React from 'react'
-import { Fingerprint ,ArrowRightToLine } from 'lucide-react';
+import { Fingerprint, LogIn } from 'lucide-react';
 
 function Login() {
   return (
@@ -22,7 +22,8 @@ function Login() {
                 <div>
                   Sign in with Google
                 </div>
-                 <ArrowRightToLine /></button>
+                <LogIn />
+              </button>
             </div>   
         </div>
     </>

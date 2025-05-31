@@ -4,8 +4,12 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import Myfile from './Myfile';
 import { NonDefault, varName } from './Myfile';
+import { BrowserRouter } from 'react-router-dom';
 createRoot(document.getElementById('root')).render(
   <>
-  <App></App>
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
+  
   </>
 )

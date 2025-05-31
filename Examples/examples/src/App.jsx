@@ -4,6 +4,9 @@ import Heading from './Components/HeadingProps';
 import HeadingParent from './Components/HeadingParent';
 import ShoppingCart from './Components/ShoppingCart';
 import Counter from './Components/Counter';
+import PropDrilling from './Context/PropDrilling';
+import Home from './Context/ThemeChanger/Home';
+import PageNotFound from './Context/ThemeChanger/PageNotFound';
 
 function InputBox(){
   const[content,setContent] = useState("");
@@ -36,7 +39,12 @@ function CounterParent() {
         <ShoppingCart></ShoppingCart>
         <Counter></Counter>
         <CounterParent></CounterParent> */}
-        <InputBox></InputBox>
+        {/* <InputBox></InputBox> */}
+        {/* <PropDrilling></PropDrilling> */}
+        <Routes>
+          <Route path='/' element={Home}></Route>
+          <Route path='*' element={PageNotFound}></Route>
+        </Routes>
       </>
     )
   }
