@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './App.css'
 import Heading from './Components/HeadingProps';
 import HeadingParent from './Components/HeadingParent';
 import ShoppingCart from './Components/ShoppingCart';
 import Counter from './Components/Counter';
 import PropDrilling from './Context/PropDrilling';
+import { Routes, Route } from 'react-router-dom';
 import Home from './Context/ThemeChanger/Home';
 import PageNotFound from './Context/ThemeChanger/PageNotFound';
+
+export const ThemeWrapper = React.createContext()
 
 function InputBox(){
   const[content,setContent] = useState("");
@@ -30,7 +33,11 @@ function CounterParent() {
 }
 
   function App() {
-    const [count, setCount] = useState(0)
+    const [isDark, updateTheme] = useState(false);
+    const handleToggleTheme = () => {
+      updateTheme(!isDark)
+    }
+
 
     return (
       <>
@@ -41,10 +48,17 @@ function CounterParent() {
         <CounterParent></CounterParent> */}
         {/* <InputBox></InputBox> */}
         {/* <PropDrilling></PropDrilling> */}
-        <Routes>
-          <Route path='/' element={Home}></Route>
-          <Route path='*' element={PageNotFound}></Route>
-        </Routes>
+
+          
+        <button onClick={handleToggleTheme}>Toggle Theme</button>
+        <ThemeWrapper.Provider value={isDark}>
+          <Routes>
+          <Route path='/' element={<Home/>}></Route>
+          <Route path='*' element={<PageNotFound/>}></Route>
+          </Routes>
+        </ThemeWrapper.Provider>
+
+        
       </>
     )
   }
