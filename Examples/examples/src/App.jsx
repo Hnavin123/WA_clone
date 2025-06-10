@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Context/ThemeChanger/Home';
 import PageNotFound from './Context/ThemeChanger/PageNotFound';
 
-export const ThemeWrapper = React.createContext()
+import  { useDarkTheme } from './Context/ThemeChanger/ThemeContext';
 
 function InputBox(){
   const[content,setContent] = useState("");
@@ -33,10 +33,7 @@ function CounterParent() {
 }
 
   function App() {
-    const [isDark, updateTheme] = useState(false);
-    const handleToggleTheme = () => {
-      updateTheme(!isDark)
-    }
+    const {handleToggleTheme} = useDarkTheme();
 
 
     return (
@@ -49,14 +46,15 @@ function CounterParent() {
         {/* <InputBox></InputBox> */}
         {/* <PropDrilling></PropDrilling> */}
 
-          
         <button onClick={handleToggleTheme}>Toggle Theme</button>
-        <ThemeWrapper.Provider value={isDark}>
+        
           <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='*' element={<PageNotFound/>}></Route>
           </Routes>
-        </ThemeWrapper.Provider>
+
+          
+        
 
         
       </>
