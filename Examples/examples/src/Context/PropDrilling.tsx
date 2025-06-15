@@ -1,88 +1,42 @@
-import React,{useContext} from 'react'
+import React from 'react'
 
-const ContextWrapper = React.createContext();
 function PropDrilling() {
-  const value=10;
+  const value = 10;
   return (
     <>
-      <div>PropDrilling Solution</div>
-      <ContextWrapper.Provider value={value}>
-        <GrandParent></GrandParent>
-      </ContextWrapper.Provider>
+      <div>PropDrilling</div>
+      <GrandParent gpValue={value} />
     </>
-    
-  )
+  );
 }
-function GrandParent(){
-  return (
+function GrandParent(props){
+  const {gpValue} = props
+  return(
     <>
-      <h1>Grand Parent</h1>
-      <Parent></Parent>
+      <h2>Grand Parent</h2>
+      <Parent pValue={gpValue}/>
     </>
   )
+  
 }
-function Parent(){
-  return (
+function Parent(props){
+  const {pValue} = props
+  return(
     <>
       <h2>Parent</h2>
-      <Child></Child>
+      <Child cValue={pValue} />
     </>
-  )
+  ) 
 }
-function Child(){
-  const message = useContext(ContextWrapper);
-  return (
+function Child(props){
+  const {cValue} = props;
+  return(
     <>
-      <h2>Child </h2>
-      <div>value:{message}</div>
+      <h2>Child</h2>
+      <div>value :{cValue}</div>
     </>
   )
 }
+
 
 export default PropDrilling
-
-
-//Prop Drilling Example
-// import React from 'react'
-
-// function PropDrilling() {
-//   const value =10;
-//   return (
-//     <><
-//       div>PropDrilling</div>
-//       <GrandParent value={value}></GrandParent>
-//     </>
-//   )
-// }
-
-// function GrandParent (props){
-//   const value = props.value;
-//   return (
-//     <>
-//     <h2>Grant Parent</h2>
-//     <Parent value={value}></Parent>
-//     </>
-//   )
-// }
-
-// function Parent (props){
-//   const value = props.value;
-//   return (
-//     <>
-//     <h2>Parent</h2>
-//     <Child value={value}></Child>
-//     </>
-//   )
-// }
-
-// function Child (props){
-//   const value = props.value;
-//   return (
-//     <>
-//     <h2> Children</h2>
-//     <div>value={value}</div>
-//     </>
-//   )
-// }
-
-// export default PropDrilling

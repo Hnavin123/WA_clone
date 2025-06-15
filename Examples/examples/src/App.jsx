@@ -5,6 +5,7 @@ import HeadingParent from './Components/HeadingParent';
 import ShoppingCart from './Components/ShoppingCart';
 import Counter from './Components/Counter';
 import PropDrilling from './Context/PropDrilling';
+import PropDrillingSol from './Context/PropDrillingSol';
 import { Routes, Route } from 'react-router-dom';
 import Home from './Context/ThemeChanger/Home';
 import PageNotFound from './Context/ThemeChanger/PageNotFound';
@@ -33,7 +34,7 @@ function CounterParent() {
 }
 
   function App() {
-    const {handleToggleTheme} = useDarkTheme();
+    // const {handleToggleTheme} = useDarkTheme();
 
 
     return (
@@ -45,16 +46,14 @@ function CounterParent() {
         <CounterParent></CounterParent> */}
         {/* <InputBox></InputBox> */}
         {/* <PropDrilling></PropDrilling> */}
+        <PropDrillingSol></PropDrillingSol>
 
-        <button onClick={handleToggleTheme}>Toggle Theme</button>
+        {/* <button onClick={handleToggleTheme}>Toggle Theme</button>
         
           <Routes>
           <Route path='/' element={<Home/>}></Route>
           <Route path='*' element={<PageNotFound/>}></Route>
-          </Routes>
-
-          
-        
+          </Routes> */}
 
         
       </>
