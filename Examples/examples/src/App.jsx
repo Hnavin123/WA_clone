@@ -10,32 +10,37 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Context/ThemeChanger/Home';
 import PageNotFound from './Context/ThemeChanger/PageNotFound';
 
-import  { useDarkTheme } from './Context/ThemeChanger/ThemeContext';
+// import  { useDarkTheme } from './Context/ThemeChanger/ThemeContext';
 
-function InputBox(){
-  const[content,setContent] = useState("");
+// function InputBox(){
+//   const[content,setContent] = useState("");
 
-  const handleChange = (e) =>{
-    const updatedValue = e.target.value;
-    setContent(updatedValue);
-  }
-  return <div>
-    <input type="text" value={content} onChange={handleChange} />
-  </div>
-}
+//   const handleChange = (e) =>{
+//     const updatedValue = e.target.value;
+//     setContent(updatedValue);
+//   }
+//   return <div>
+//     <input type="text" value={content} onChange={handleChange} />
+//   </div>
+// }
 
 
-function CounterParent() {
-  return <div>
-    <Counter initialvalue={1}></Counter>
-    <Counter initialvalue={2}></Counter>
-    <Counter initialvalue={3}></Counter>
-  </div>
-}
+// function CounterParent() {
+//   return <div>
+//     <Counter initialvalue={1}></Counter>
+//     <Counter initialvalue={2}></Counter>
+//     <Counter initialvalue={3}></Counter>
+//   </div>
+// }
+
+export const ThemeWrapper = React.createContext();
 
   function App() {
-    // const {handleToggleTheme} = useDarkTheme();
-
+    const[isDark, updateTheme] = useState(false);
+    const handleToggleTheme = () => {
+      updateTheme(!isDark);
+    }
+    
 
     return (
       <>
@@ -46,15 +51,17 @@ function CounterParent() {
         <CounterParent></CounterParent> */}
         {/* <InputBox></InputBox> */}
         {/* <PropDrilling></PropDrilling> */}
-        <PropDrillingSol></PropDrillingSol>
-
-        {/* <button onClick={handleToggleTheme}>Toggle Theme</button>
         
-          <Routes>
-          <Route path='/' element={<Home/>}></Route>
-          <Route path='*' element={<PageNotFound/>}></Route>
-          </Routes> */}
 
+        <button onClick={handleToggleTheme}>Toggle Theme</button>
+        <ThemeWrapper.Provider value={isDark}>
+           <Routes>
+            <Route path='/' element={<Home/>}></Route>
+            <Route path='*' element={<PageNotFound/>}></Route>
+          </Routes>
+
+        </ThemeWrapper.Provider>
+         
         
       </>
     )

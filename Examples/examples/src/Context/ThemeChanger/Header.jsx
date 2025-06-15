@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ThemeWrapper } from "../../App";
 
 
 function Header() {
@@ -14,10 +16,8 @@ function Header() {
 }
 
 function Options(){
-  // const {isDark} = useDarkTheme();
-  const isDark = useDarkTheme();
-    return <div className={`${isDark?"dark":"light"}`}>Options</div>
-    
+  const isDark =  useContext(ThemeWrapper)
+    return <div className={`${isDark?"dark":"light"}`}>Options wala</div>
 }
 
-export default Header
+export default Header;
